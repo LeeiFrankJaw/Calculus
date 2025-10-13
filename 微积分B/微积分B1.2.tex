@@ -585,15 +585,15 @@
   求\(\lim\limits_{n\to\infty} {a^n}\!/{n!}\)． % \rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
-    当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，构造数列
+    令\(a_n = a^n\!/n!,\ n_0 = \floor{\abs{\,a\,}},\ C_a = a_{n_0}\)．构造数列
     \begin{equation*}
-      c_n =
+      b_n =
       \begin{cases}
-        C_a, & n \le n_a, \\
-        C_a \cdot \paren[\bigg]{\frac{a}{n_a + 1}}^{n-n_a}, & n > n_a,
+        C_a, & n \le n_0, \\
+        C_a \cdot \paren*{\frac{\abs{\,a\,}}{n_0 + 1}}^{\mathrlap{n-n_0}}, \qquad & n > n_0.
       \end{cases}
     \end{equation*}
-    其中\(n_a = \ceil{\abs{\,a\,}},\ C_a = a^{n_a}\!/n_a!\)．自然有\(0 \le \abs*{\,a^n\!/n!\,} \le c_n\)且\(\lim\limits_{n\to\infty} c_n = 0\)．根据夹逼定理，自然有\(\lim\limits_{n\to\infty} \abs{\,a^n/n!\,} = 0\)，从而\(\lim\limits_{n\to\infty} a^n/n! = 0\)．
+    可见\(\lim\limits_{n\to\infty} b_n = 0\)且当\(n > n_0\)时有\(0 \le \abs{\,a_n\,} \le b_n\)．根据夹逼定理，自然有\(\lim\limits_{n\to\infty} \abs{\,a_n\,} = 0\)，从而\(\lim\limits_{n\to\infty} a_n = 0\)．
   \end{remark}
 
   % \begin{remark}
