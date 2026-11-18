@@ -34,17 +34,17 @@
 \begin{theorem*}
   \leavevmode
   \begin{enumerate}[label=\enumparen{\arabic*}]
-  \item Let \(n\) be a whole positive number that grows without limit.  If the unique function \(\varphi(n)\) grows (decreases) continuously with \(n\) from a value \(n = n_1\), and thus has a limit at \(\lim = +\infty\) according to No. 6, which is supposed to be infinite; then it follows from the existence of the limit
+  \item Let \(n\) be a whole positive number that grows without limit.  If the single-valued function \(\varphi(n)\) grows (decreases) continually with \(n\) from a value \(n = n_1\), and thus has a limit at \(\lim = +\infty\) according to No. 6, which is supposed to be infinite; then it follows from the existence of the limit
     \begin{equation*}
       \lim_{n=+\infty} \frac{f(n+1)-f(n)}{\varphi(n+1)-\varphi(n)} = K,
     \end{equation*}
-    where \(f(n)\) also means a unique function of \(n\), that there is also a limit for the fraction \(f(n):\varphi(n)\) at \(\lim n = +\infty\), namely that it is equal to \(K\).
+    where \(f(n)\) also means a single-valued function of \(n\), that there is also a limit for the fraction \(f(n):\varphi(n)\) at \(\lim n = +\infty\), namely that it is equal to \(K\).
 
-  \item The same theorem applies if the unique functions \(f(n), \varphi(n)\) each have the limit \(0\) for \(\lim n = +\infty\) and \(\varphi(n)\) grows (decreases) continuously with \(n\) from \(n = n_1\).
+  \item The same theorem applies if the single-valued functions \(f(n), \varphi(n)\) each have the limit \(0\) for \(\lim n = +\infty\) and \(\varphi(n)\) grows (decreases) continually with \(n\) from \(n = n_1\).
   \end{enumerate}
 
   \begin{proof}
-    For the proof, it is sufficient to assume that \(\varphi(n)\) increases continuously with \(n\) and that \(K\) does not have the sign \(-\). Then two cases can be distinguished for the first theorem, to which we restrict the following development.
+    For the proof, it is sufficient to assume that \(\varphi(n)\) increases continually with \(n\) and that \(K\) does not have the sign \(-\). Then two cases can be distinguished for the first theorem, to which we restrict the following development.
     \begin{enumerate}[label=\alph*)]
     \item \label{item:1} \(K \geqq 0\).  According to the assumption, for every number \(\varepsilon > 0\) there belongs a number G such that
       \begin{equation*}
@@ -52,7 +52,7 @@
         \hspace{1.5em}
         n > G.
       \end{equation*}
-      From this we conclude that, since \(\varphi(m + 1) > \varphi(n)\),
+      From this we conclude that, since \(\varphi(n+1) > \varphi(n)\),
       \begin{equation*}
         (K-\varepsilon)\brkt{\varphi(n+1)-\varphi(n)}
         < f(n+1)-f(n)
@@ -81,7 +81,7 @@
       However large the number \(m\) may be; then, because \(\lim\varphi(n) = +\infty\) we can find a number \(\varrho > 0\) such that
       \begin{equation}
         \label{eq:a}
-        \frac{\abs{f(m) - K \varphi(m)}}{\varphi(m+r)} < \varepsilon
+        \frac{\abs{\,f(m) - K \varphi(m)\,}}{\varphi(m+r)} < \varepsilon
         \qfor
         r > \varrho.
       \end{equation}
@@ -102,7 +102,7 @@
       from which we find as above---\(m > G'\)---
       \begin{gather}
         \label{eq:c}
-        f(m+r) - f(m) > H' \Seq{\varphi(m+r)-\varphi(m)}, \\
+        f(m+r) - f(m) > H' \Seq{\varphi(m+r)-\varphi(m)} \\
         \frac{f(m+r)}{\varphi(m+r)}
         > H' + \frac{f(m)-H'\varphi(m)}{\varphi(m+r)}.
         \nonumber
@@ -111,7 +111,7 @@
       \begin{equation*}
         r > \varrho
         \hspace{1.5em}
-        \abs{f(m) - H' \varphi(m)}:\varphi(m+r) < H' - H;
+        \abs{\,f(m) - H' \varphi(m)\,}:\varphi(m+r) < H' - H;
       \end{equation*}
       therefore, for all \(n > m + \varrho\)
       \begin{equation*}
@@ -131,7 +131,7 @@
     \end{enumerate}
   \end{proof}
   \begin{remark}
-    The above theorems can be extended to the case that the independent variable grows continuously over all limits.
+    The above theorems can be extended to the case that the independent variable grows continually over all limits.
   \end{remark}
 \end{theorem*}
 \end{document}
