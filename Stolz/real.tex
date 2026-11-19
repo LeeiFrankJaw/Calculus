@@ -9,12 +9,25 @@
   pdfsubject={Real Analysis}}
 
 \newtheorem*{theorem*}{Theorem}
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+% \theoremstyle{remark}
+% \newtheorem*{remark}{Remark}
 
 \usepackage{enumitem}
 
 \setlist[enumerate,1]{label=\enumparen{\arabic*}}
+
+\makeatletter
+\newcommand{\alphnoj}[1]{\expandafter\@alphnoj\csname c@#1\endcsname}
+\newcommand{\@alphnoj}[1]{%
+  \ifcase#1\or a\or b\or c\or d\or e\or f\or g\or h\or i\or
+  k\or l\or m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or
+  w\or x\or y\or z\else\@ctrerr\fi
+}
+\makeatother
+
+\AddEnumerateCounter{\alphnoj}{\@alphnoj}{m}
+
+\renewcommand{\theequation}{\alphnoj{equation}}
 
 \usepackage{fontspec}
 
@@ -36,7 +49,7 @@
 \begin{theorem*}
   \leavevmode
   \begin{enumerate}
-  \item Let \(n\) be a whole positive number that grows without limit.  If the single-valued function \(\varphi(n)\) grows (decreases) monotonically with \(n\) from a value \(n = n_1\), and thus has a limit as \(\lim n = +\infty\) according to No. 6, which is supposed to be infinite; then it follows from the existence of the limit
+  \item \label{thm:1} Let \(n\) be a whole positive number that grows without limit.  If the single-valued function \(\varphi(n)\) grows (decreases) monotonically with \(n\) from a value \(n = n_1\), and thus has a limit as \(\lim n = +\infty\) according to No. 6, which is supposed to be infinite; then it follows from the existence of the limit
     \begin{equation*}
       \lim_{n=+\infty} \frac{f(n+1)-f(n)}{\varphi(n+1)-\varphi(n)} = K,
     \end{equation*}
@@ -92,7 +105,7 @@
         \label{eq:b}
         \abs*{\frac{f(m+r)}{\varphi(m+r)} - K} < 2\varepsilon
       \end{equation}
-      or \(\abs{f(n):\varphi(n) — K} < 2\varepsilon\) for all \(n > m+\varrho\).  Now then, the number \(2\varepsilon\), which can be any positive number, indeed corresponds to the number \(m+\varrho\), since \(m\) results from \(\varepsilon\) initially and after \(m\) the number \(\varrho\) from \(\varepsilon\).  Thus we have
+      or \(\abs{f(n):\varphi(n) - K} < 2\varepsilon\) for all \(n > m+\varrho\).  Now then, the number \(2\varepsilon\), which can be any positive number, indeed corresponds to the number \(m+\varrho\), since \(m\) results from \(\varepsilon\) initially and after \(m\) the number \(\varrho\) from \(\varepsilon\).  Thus we have
       \begin{equation*}
         \lim f(n):\varphi(n) = K
       \end{equation*}
@@ -101,7 +114,7 @@
       \begin{equation*}
         f(n+1) - f(n) > H' \Seq{\varphi(n+1)-\varphi(n)},
       \end{equation*}
-      from which we find as above---\(m > G'\)---
+      from which we find as above --- \(m > G'\) ---
       \begin{gather}
         \label{eq:c}
         f(m+r) - f(m) > H' \Seq{\varphi(m+r)-\varphi(m)} \\
@@ -135,6 +148,158 @@
 \end{theorem*}
 
 The above theorems can be extended to the case that the independent variable grows continuously beyond all bounds.
+
+\begin{theorem*}
+  \leavevmode
+  \begin{enumerate}[{label=\enumparen[1em]{\arabic*\upstar}}]
+  \item \label{thm:1star} Let two single-valued functions \(F(x)\) and \(\Phi(x)\) be defined for every finite value of \(x \geqq x_1\); let the former be finite in every interval \((x_1, x_2)\) --- where \(x_2 > x_1\) --- while the latter monotonically increases (decreases) together with \(x\) starting from \(x = x_1\), and therefore has a limit as \(\lim x = +\infty\) which is assumed to be infinite.  Then, from the existence of the limit
+    \begin{equation*}
+      \lim_{x=+\infty} \frac{F(x+h) - F(x)}{\Phi(x+h) - \Phi(x)} = K,
+    \end{equation*}
+    where \(h\) denotes a constant different from \(0\), it follows that \(F(x):\Phi(x)\) also possesses a limit as \(\lim x = +\infty\), and indeed precisely \(K\).
+
+  \item The same theorem holds if \(F(x)\) and \(\Phi(x)\) both approach the limit \(0\) as \(\lim x = +\infty\), and \(\Phi(x)\) grows (decreases) monotonically with \(x\) from \(x = x_1\) onward.
+  \end{enumerate}
+\end{theorem*}
+
+\begin{proof}
+  The proof can be supplied with the aid of the development given above, whereby we may assume that \(\Phi(x)\) increases monotonically with \(x\), that \(K\) does not have the sign \(-\), and that \(h > 0\).  Let \(x_0\) be an arbitrary number: \(h > x_0 \geqq 0\).  Set
+  \begin{equation*}
+    f(n) = F(x_0+nh)
+    \hspace{1.5em}
+    \varphi(n) = \Phi(x_0+nh).
+  \end{equation*}
+  Let us restrict ourselves again to the first theorem, whereby it will also suffice to examine more closely the case of a finite \(K\).  We find immediately from Theorem~\ref{thm:1} that
+  \begin{equation*}
+    \lim_{n=+\infty} \frac{F(x_0+nh)}{\Phi (x_0+nh)} = K;
+  \end{equation*}
+  which, however, would not be completely sufficient to establish the formula
+  \begin{equation*}
+    \lim_{x=+\infty} \frac{F(x)}{\Phi (x)} = K
+  \end{equation*}
+  as valid.  Rather, one must still add the following.  By hypothesis, to every number \(\varepsilon > 0\) there corresponds a number \(G > 0\) such that
+  \begin{equation}
+    \label{eq:d}
+    \abs*{\frac{F(x+h)-F(x)}{\Phi (x+h)-\Phi (x)}-K} < \varepsilon
+    \qfor
+    x>G.
+  \end{equation}
+  For \(x = x_0 + nh\), it follows from this that
+  \begin{equation*}
+    \abs*{\frac{f(n+1)-f(n)}{\varphi (n+1)-\varphi (n)}-K} < \varepsilon,
+  \end{equation*}
+  whenever \(x_0 + nh > G\), hence whatever \(x_0\) may otherwise be, whenever \(k > G : h\).  We now choose the integer \(m > G : h\) and the number \(\varrho\) occurring in \eqref{eq:a} as follows.  As \(x_0\) runs through the interval \((0, h)\), \(f(m)\) takes the values from \(F(mh)\) to \(F(mh + h)\), all of which, by hypothesis, lie between two finite numbers \(A_m, B_m\):
+  \begin{equation*}
+    A_m < f(m) < B_m.
+  \end{equation*}
+  Consequently, since
+  \begin{equation*}
+    \Phi (mh+h) > \varphi(m) \geqq \Phi(mh),
+  \end{equation*}
+  we have
+  \begin{equation*}
+    A_m - K\Phi(mh+h) < f(m) - K\varphi(m) < B_m - K\Phi(mh).
+  \end{equation*}
+  If one denotes by \(P\) the larger of the absolute values of the outer terms of this inequality, which are independent of \(x_0\), then
+  \begin{equation*}
+    \frac{\abs{\,f(m) - K\varphi(m)\,}}{\varphi(m+r)} < \frac{P}{\Phi(mh+rh)}.
+  \end{equation*}
+  If we now choose the number \(\varrho > 0\) such that for
+  \begin{equation}
+    \label{eq:e}
+    r > \varrho
+    \hspace{1.5em}
+    0 < \frac{P}{\Phi(mh+rh)} < \varepsilon;
+  \end{equation}
+  then \eqref{eq:b} follows again first of all, i.e.,
+  \begin{equation*}
+    \abs*{\frac{f(n)}{\varphi (n)}-K} < 2\varepsilon
+    \qfor
+    n > m + \varrho.
+  \end{equation*}
+  However, we also have
+  \begin{equation}
+    \label{eq:f}
+    \abs*{\frac{F(x)}{\Phi(x)} - K} < 2\varepsilon,
+  \end{equation}
+  provided only that \(x > h(m + \varrho + 1)\).  Namely, if \(x'\) is a value exceeding the number \(h(m + \varrho + 1)\), and one sets
+  \begin{equation*}
+    x' = kh + x_0
+    \hspace{1.5em}
+    (0 \leqq x_0 < h),
+  \end{equation*}
+  then the integer \(k\) must be \(> m+\varrho\).  Since now the number \(G\) is determined by \(\varepsilon \) via \eqref{eq:d}, thereupon \(m\) by the requirement \(m > G : h\), and finally \(\varrho \) via \eqref{eq:e} by \(\varepsilon \) and \(m\); we have thus, in \eqref{eq:f}, assigned the number \(h(m + \varrho + 1)\) to the arbitrary number \(2\varepsilon > 0\).  Only now are we justified in setting down the formula:
+  \begin{equation*}
+    \lim_{x=+\infty} \frac{F(x)}{\Phi(x)} = K.
+    \qedhere
+  \end{equation*}
+\end{proof}
+
+The preceding example is particularly well suited to show with what caution one must proceed in order to establish the existence of a limit with certainty.
+
+Application of Theorem \ref{thm:1star}.  If one is concerned with investigating the quotient \(\log x : x\) as \(\lim x = +\infty\), one sets
+\begin{equation*}
+  F(x) = \log x,
+  \hspace{1.5em}
+  \Phi(x) = x.
+\end{equation*}
+Since now
+\begin{equation*}
+  \frac{F(x+h) - F(x)}{\Phi(x+h) - \Phi(x)} = \frac{1}{h} \logp*{1+\frac{h}{x}}
+\end{equation*}
+has the limit \(0\) as \(\lim x = +\infty\), as will soon become apparent, it follows that \(\log x : x\) also has a limit as \(\lim x = +\infty\).  Namely,
+\begin{equation}
+  \lim_{x=+\infty} \frac{\log x}{x} = 0.
+  \label{eq:g}
+\end{equation}
+One can also derive this important formula by simpler considerations. Specifically, it is identical with the following:
+\begin{equation}
+  \lim_{x=+\infty} \frac{a^x}{x} = +\infty
+  \hspace{1.5em}
+  (a>1).
+  \label{eq:h}
+\end{equation}
+If one first lets \(x\) be a natural number \(n\), then one has (\(a = 1 + d\))
+\begin{equation*}
+  a^n > 1 + nd + \frac{n(n-1)}{2} d^2,
+  \hspace{1.5em}
+  \frac{a^n}{n} > \frac{n-1}{2} d^2,
+\end{equation*}
+from which it follows that
+\begin{equation*}
+  \lim_{n=+\infty} \frac{a^n}{n} = +\infty.
+\end{equation*}
+And if \(n < x < n + 1\), then one has
+\begin{equation*}
+  \frac{a^x}{x}
+  > \frac{a^n}{n+1}
+  = \frac{a^n}{n} : \paren*{1 + \frac{1}{n}}
+  > \frac{m}{m+1} \cdot \frac{a^n}{n},
+\end{equation*}
+whenever \(n > m > 1\).  By the preceding, to every number \(G > 0\) there corresponds a number \(\mu > 0\) such that for \(n > \mu\)
+\begin{equation*}
+  \frac{m}{m+1} \frac{a^n}{n} > G,
+\end{equation*}
+so that for all \(x > \mu + 1\)
+\begin{equation*}
+  \frac{a^x}{x} > G.
+\end{equation*}
+From \eqref{eq:h}, it follows by No. 9. III., because
+\begin{equation*}
+  \frac{a^x}{x^\mu} = \brce*{\frac{\paren*{a^{\frac{1}{\mu}}}^x}{x}}^\mu,
+\end{equation*}
+that
+\begin{equation}
+  \label{eq:i}
+  \lim_{x=+\infty} \frac{a^x}{x^\mu} = +\infty
+  \hspace{1.5em}
+  (a>1,\ \mu >0).
+\end{equation}
+From \eqref{eq:g}, one derives via the substitution \(x = \dfrac{1}{y}\):
+\begin{equation}
+  \lim_{y=+0} y \log y = 0.
+  \label{eq:k}
+\end{equation}
 
 \end{document}
 

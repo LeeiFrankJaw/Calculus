@@ -66,7 +66,7 @@
 \newcommand*{\qfor}{\txt{for}}
 \let\reason\text
 
-\newcommand*{\enumparen}[1]{\textnormal{(}\makebox[0.6em][c]{#1}\textnormal{)}}
+\newcommand*{\enumparen}[2][0.6em]{\textnormal{(}\makebox[#1][c]{#2}\textnormal{)}}
 \renewcommand{\labelenumii}{\enumparen{\theenumii}}
 \newcommand*{\upstar}{\textsuperscript{\normalfont\textasteriskcentered}}%
 \makeatletter
@@ -103,6 +103,7 @@
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\expb}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\lnp}[1]{\ln}{\lparen}{\rparen}{}{#1}
+\DeclarePairedDelimiterXPP{\logp}[1]{\log}{\lparen}{\rparen}{}{#1}
 \DeclarePairedDelimiterXPP{\Set}[1]{\mathop{}}{\lbrace}{\rbrace}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \let\Seq\Set
@@ -178,4 +179,5 @@
 % Local Variables:
 % mode: latex
 % TeX-engine: luatex
+% TeX-master: "real"
 % End:
